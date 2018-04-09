@@ -2,10 +2,6 @@ import React, {PropTypes} from 'react';
 import { BrowserRouter, Route,Switch } from 'react-router-dom'
 
 import APP from './components/App';
-import Home from './components/Home/Home'
-import Header from './components/Header/Header'
-import Auth from './components/Auth/Auth'
-import Calendar from './components/Calendar/Calendar';
 
  class Router extends React.Component {
 
@@ -14,9 +10,7 @@ import Calendar from './components/Calendar/Calendar';
       <div>
         <Header/>
         <Switch>
-          <Route path='/calendar' component={Calendar}/>
-          <Route path='/auth' component={Auth}/>
-          <Route path='/' component={Home}/>
+          <Route path='/' component={APP}/>
         </Switch>
       </div>
     );
