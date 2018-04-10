@@ -8,7 +8,6 @@ import APP from './components/App';
   render() {
     return (
       <div>
-        <Header/>
         <Switch>
           <Route path='/' component={APP}/>
         </Switch>
