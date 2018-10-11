@@ -5,6 +5,8 @@ import './App.css';
 import Search from './Search';
 import CoinList from './CoinList';
 import Dashboard from './Dashboard';
+import moment from 'moment';
+import axios from 'axios';
 
 const AppLayout = styled.div`
     padding:2rem 4rem;
@@ -40,7 +42,8 @@ const AppLayout = styled.div`
       favoriteCoins:JSON.parse(localStorage.getItem('cryptoDash')) || [],
       dashboardRenderCoin:JSON.parse(localStorage.getItem('crpytoPrice')) || [],
       prices:[],
-      currentFavorite:null
+      currentFavorite:null,
+      chartData:[]
     }
 
     componentDidMount() {
@@ -48,6 +51,7 @@ const AppLayout = styled.div`
       //fetch the coin
       this.fetchCoin();
       this.fetchPrice();
+      this.fetchHistoricalData();
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -55,6 +59,12 @@ const AppLayout = styled.div`
         this.fetchPrice();
       }
     }
+
+    fetchHistoricalData = async () => {
+      const {data} = await axios.get('https://jsonplaceholder.typicode.com/users')
+      this.setState({chartData:data})
+    }
+
 
     fetchCoin = async () => {
       const {Data} = await cc.coinList();
@@ -188,10 +198,10 @@ const AppLayout = styled.div`
                 this.state.page === 'dashboard' &&
                 <Fragment>
                   {
-                    this.state.prices.length <= 0
+                    this.state.prices.length <= 0 && this.state.chartData.length <=0
                     ?
                     <div>Loading fetching the prices</div>
-                    : <Dashboard prices={this.state.prices} coinNames={this.state.favoriteCoins} {...tileProps} list={this.state.coinList}/>
+                    : <Dashboard prices={this.state.prices} coinNames={this.state.favoriteCoins} {...tileProps} list={this.state.coinList} chartData={this.state.chartData}/>
                   }
                 </Fragment>
               }

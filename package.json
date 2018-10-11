@@ -8,10 +8,11 @@
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "bootstrap": "^4.0.0",
     "cryptocompare": "^0.5.0",
     "history": "^4.7.2",
-    "moment": "^2.21.0",
+    "moment": "^2.22.2",
     "node-sass-chokidar": "^1.1.0",
     "npm-run-all": "^4.1.2",
     "react": "^16.4.0",

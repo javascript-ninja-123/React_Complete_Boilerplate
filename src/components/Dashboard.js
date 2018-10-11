@@ -67,6 +67,22 @@ class Dashboard extends Component {
       }
     }
 
+    mixConfig = () => {
+      const data = this.props.chartData.reduce((acc,val,i) => {
+        acc.push(val.id)
+        return acc;
+      },[])
+
+      const series = [
+        {
+          name:'ids',
+          data
+        }
+      ]
+      const y  ={...config,series};
+      return y
+    }
+
     render() {
         return (
           <Fragment>
@@ -77,7 +93,7 @@ class Dashboard extends Component {
               <div>
                 {this.renderStuff()}
               </div>
-              <ReactHighcharts config={config}></ReactHighcharts>
+              <ReactHighcharts config={this.mixConfig()}></ReactHighcharts>
             </ChartContainer>
           </Fragment>
         );
