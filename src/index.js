@@ -8,8 +8,6 @@ import createHistory from 'history/createBrowserHistory'
 import { BrowserRouter, Route,Switch } from 'react-router-dom'
 import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 import {createEpicMiddleware} from 'redux-observable';
-import 'bootstrap/dist/css/bootstrap.css';
-
 
 import reducers from './reducers';
 import Router from './router';
